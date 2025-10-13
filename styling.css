@@ -2,6 +2,10 @@ head{
   font-family: calibri;
 }
 
+body{
+  background-color:#FFFFFF;margin-left:50px;
+}
+
 table{
   font-family: arial, sans-serif;
   border-collapse: collapse;
