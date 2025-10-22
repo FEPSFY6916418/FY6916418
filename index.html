@@ -7,6 +7,10 @@
     <h2 style = "font-family: calibri;"><b>Conference paper</b></h2>
     <hr>
   <script type=”text/javascript” src=https://www.gstatic.com/charts/loader.js></script>
+    google.charts.load(‘current’, { ‘packages’ : [‘corechart’] });
+    google.charts.setOnLoadCallback(drawChart);
+  </script>
+      
   </head>
   <body>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,5 +49,8 @@
     <p>This is some placeholder text for the references section of my article for my conference project. </p>
     <hr>
   </p>
+    
+  <div id=”chart_div”></div>
+  
   </body>
 </html>
