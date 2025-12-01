@@ -4,7 +4,7 @@
     <img src="33621_University of Surrey_Master Logo_Battersea Blue_RGB.png" alt="Banner" width="1200" height="300">
     <h1><b>ENG0018 Computer Laboratory 2025/26</b></h1>
     <h2>Student URN: 6916418</h2>
-    <h2><b>Conference paper: Exploring the Mathematics of the Fourier and Laplace Transforms</b></h2>
+    <h2><b>Conference paper: Exploring the Mathematics of the Laplace Transform in solving complex differential equations.</b></h2>
     <hr>
     <script type=”text/javascript” src=https://www.gstatic.com/charts/loader.js>
       google.charts.load(‘current’, { ‘packages’ : [‘corechart’] });
@@ -105,16 +105,50 @@
     </tr>
     </table>
     <h3 id="Abstract">Abstract</h3>
-    <p>This is some placeholder text for the abstract section of my article for my conference project. </p>
+    <p>This article delves into the mathematics of the Laplace transform, especially concerning complex differential equations. Beginning with how exponentials behave on the complex plane, we are led into the process of guessing an exponential as part of a generic differential equation to solve for its unknowns, before explaining why this works and the influence of the Laplace transform. The Laplace transform is then defined and used to solve a wider variety of differential equations than the previous simplification of guessing exponentials (due to less restrictions). The ability of the transform to enable the differential equations to be analysed in the complex plane is then made apparent by observing the behaviour of poles and their relation to the exponentials from the beginning.</p>
     <hr>
     <h3 id="Introduction">Introduction</h3>
-    <p id="Introduction_InText">This is some placeholder text for the introduction section of my article for my conference project. </p>
+    <p id="Introduction_InText">Have you ever taken a phone call? Or listened to a piece of music? Given we are in the year 2025, you could ask most people these questions and they would say yes. But have you ever asked yourself, how can we clearly hear the person on the other side of the call? Or how you can hear the music without any background sounds from the studio? In both cases, it’s likely a form of the Laplace transform was used along the way. But what is a transform? If you’ve heard of a function from maths, it’s quite similar to that (Grant Sanderson, 2025a, 5:54). In a function such as 𝑓(𝑥) = 2𝑥, 𝑥∈ℝ, you could take any real valued input and a new, unique value would be outputted, in this case twice the value of the original value. If we inputted many different values, they’d return many different outputs. A transform takes a function as an input, and outputs another function (Grant Sanderson, 2025, 6:03). Similarly, if we take lots of different functions (a family of functions) as inputs, we could output lots of new functions, which could help to solve various problems.</p>
     <hr>
     <h3 id="Analysis & Discussion">Analysis & Discussion</h3>
-    <p id="Analysis_InText">This is some placeholder text for the analysis and discussion section of my article for my conference project. </p>
+    <p id="Analysis_InText">Before delving into how the transform is computed, it’s important to understand how exponential functions behave when you allow complex numbers as inputs. This is as it includes an exponential in its definition (Grant Sanderson, 2025a, 7:29), (Grant Sanderson, 2018a, 16:02, 18:28). If we take a value such as 1 and multiply it by i (which is √-1), we cause a 90° rotation in the complex (s) plane (Grant Sanderson, 2025b, 4:20), (Grant Sanderson, 2025a, 4:52), (Pierce, R., 2025), as shown in Figure 1.
+    ADD IMAGE
+    Take the function f(t) = eit, considering i as a constant, we can get f’(t) = ieit by differentiating. This means finding the derivative simply multiplies the function by i, using the rules before we see that the derivative always needs to be perpendicular to the function’s current value, this is only possible if f(t) is a unit circle (Grant Sanderson, 2025b, 5:05). This function is a special case of f(t) = est, where s is i (Grant Sanderson, 2025, 7:09), the component s is simply a complex number in the form s = σ + iω where σ is the real part and iω the imaginary part (AmBrBit, 2025), (Pierce, R., 2025), ω being an angular frequency (Grant Sanderson, 2025b, 7:56). If we graph f(t), the imaginary part of s tells us the frequency and direction of oscillation of the spirals formed on the s plane and the real component tells us if the function is decaying (converging to a point) if negative or growing (diverging) if positive (Grant Sanderson, 2025b, 9:10).
+    But why was it so important to know how complex exponentials behave? An application is in differential equations (ODEs). If you have any sum of differently ordered derivatives of a function, scaled by any set of constants that equal 0, and you don’t know the function that the system corresponds to, you could guess est as the function (Grant Sanderson, 2025b, 21:09). Recalling from earlier, when differentiating e with a constant, we simply multiply by that constant, and each subsequent order derivative is multiplied by an additional factor of that same constant (Grant Sanderson, 2025b, 13:32). If we use est, each derivative is multiplied by sn (n being the order of the derivative) meaning we can factor est out, since est ≠ 0, we are left with an algebraic equation of the constants left behind (Grant Sanderson, 2025b, 21:37). If we solve this equation, we can set s to any of the roots and adapt them to our specific system by scaling by any constant (Grant Sanderson, 2025b, 22:12). This implies that for many functions, we can express them as sums of exponentials (Grant Sanderson, 2025a, 2:28). For more complicated examples, such as when the ODE doesn’t equal 0, we can’t just substitute est as a guess, this is when we would use a Laplace transform (Grant Sanderson, 2025b, 23:55, 26:55).
+    The Laplace transform is defined as F(s) = ∫_0^∞▒〖f(t) e^(-st) 〗 dt, where s can be a complex number as before (Grant Sanderson, 2025a, 7:29, 7:52). Looking back at our ODE example, we can instead apply a Laplace transform to our derivatives by substituting them into the integral and using integration by parts (although it is common to use a table so we can skip the integration) (Grant Sanderson, 2025c, 20:25), (AmBrBit, 2025). We can observe that applying a Laplace transform to a derivative is almost the same as applying the Laplace transform to the previous order derivative and then multiplying by s, you just have to subtract the function of your initial condition, the function being differentiated per higher order derivative, this is very similar to the guess of substituting est into the ODE (Grant Sanderson, 2025b, 22:12), (Grant Sanderson, 2025c, 4:43). 
+    ADD IMAGE
+    This substitution into the integral would also work when the est guess wouldn’t. For example, if an ODE equals a function such as f(t) = cos(ωt), we can substitute and integrate for the result F(s) = s/(s^2+ω^2 ) (AmBrBit, 2025). We can use partial fraction decomposition to get F(s) = 1/2(1/(s-ωi)+1/(s+ωi)) (Grant Sanderson, 2025a, 32:23), using a table or inverse Laplace transform (AmBrBit, 2025), (Luo, S. & Zhao, F., 2022), we can see f(t) = 1/2(e^iωt+e^(-iωt)) which means we split cos(ωt) into a sum of its exponential pieces, which we can adapt according to our system as with our guessing method (Grant Sanderson, 2025b, 22:12). 
+    It's also useful to just analyse our functions in the s plane (Grant Sanderson, 2025a, 22:30). We can create a 3D plot, by plotting the vectors to the points of convergence (where the graphs spiral to) of our function above the s plane  (Grant Sanderson, 2025a, 16:21). Typically our transformed function would only converge for when s is sufficiently large, however it’s still possible to graph the rest of the function on the s plane (Grant Sanderson, 2025a, 22:42). Doing this reveals the poles of our function, which are points where the function approaches infinity (Miller, H, 2012), (Rowland, T & Weisstein, E, 2025). From our example before we can see that F(s) would approach infinity if either denominator was 0, meaning s would be ±ωi, these are our poles and would appear as spikes above the s plane (Grant Sanderson 2025a, 23:42). The poles are significant because they’re also the coefficients of t in the exponentials that make up the original function (Miller, H, 2012).
+    Due to the wide applications of ODEs in systems that change over time, we can clearly see why this topic is important. Even from our very first examples, sounds can be modeled as more complicated functions and you can simply transform it and remove the exponential part that corresponds to the background sound. To conclude, the Laplace transform is an extremely powerful tool to analyse and solve ODEs.
+    </p>
     <hr>
     <h3 id="References">References</h3>
-    <p>This is some placeholder text for the references section of my article for my conference project. </p>
+    <p>Grant Sanderson. 3Blue1Brown. (2018) But what is the Fourier Transform? A visual introduction. 26 January. Available at: https://www.youtube.com/watch?v=spUNpyF58BY (Accessed 23/10/25)
+
+    Grant Sanderson. 3Blue1Brown. (2025) But what is the Laplace Transform? 12 October. Available at: https://www.youtube.com/watch?v=j0wJBEZdwLs (Accessed 12/10/25)
+    Grant Sanderson. 3Blue1Brown. (2018) The more general uncertainty principle, regarding Fourier transforms. 25 February. Available at: https://www.youtube.com/watch?v=MBnnXbOM5S4 (Accessed 23/10/25)
+    
+    Grant Sanderson. 3Blue1Brown. (2025) The Physics of Euler’s Formula | Laplace Transform Prelude. 5 October. Available at: https://www.youtube.com/watch?v=-j8PzkZ70Lg (Accessed 12/10/25)
+    
+    Grant Sanderson. 3Blue1Brown. (2025) Why Laplace transforms are so useful. 5 November. Available at: https://www.youtube.com/watch?v=FE-hM1kRK4Y (Accessed 18/11/2025)
+    
+    Ali Alqaraghuli. Ali the Dazzling. (2025) Fourier Math Explained (for Beginners). 8 February. Available at: https://www.youtube.com/watch?v=jemW4C_3_-M (Accessed 23/10/25)
+    
+    Ali Alqaraghuli. Ali the Dazzling. (2025) Fourier Transform Explained (for Beginners). 6 January. Available at: https://www.youtube.com/watch?v=iOsGkk63NfE (Accessed 23/10/25)
+    
+    AmBrBit. (2025) Laplace Transform. Available at: https://www.ambrbit.com/MathCalc/Functions/Laplace/series.htm
+    (Accessed: 18/11/25).
+    Luo, S. & Zhao, F. (2022) A Semi-Analytical Solution of Inverse Laplace Transform. Journal of mathematics 2022 (1). Available at: https://www.proquest.com/docview/2712663146/fulltext/5106950DC55D41D3PQ/1?&sourcetype=Scholarly%20Journals (Accessed: 01/12/25)
+    
+    Pierce, R. MathsisFun. (2025) Complex Numbers.  Available at: https://www.mathsisfun.com/numbers/complex-numbers.html (Accessed 25/11/25)
+    Miller, H. MIT. (2012) The pole diagram and the Laplace transform. Available at: https://math.mit.edu/classes/18.03/sup/sup27.pdf (Accessed 01/12/25)
+    
+    Weisstein, E. Wolfram MathWorld (2025) Singularity. Available at: https://mathworld.wolfram.com/Singularity.html (Accessed 01/12/25)
+    
+    Rowland, T & Weisstein, E. Wolfram MathWorld (2025) Pole. Available at: https://mathworld.wolfram.com/Pole.html (Accessed 01/12/25)
+    
+    Zauberberg Lab Company Limited. (2025) Collanote (Version October 9, 2025) [Mobile app]. Available at: https://www.collanote.com/ (Accessed 26/10/25)
+  </p>
     <hr>
   </p>
   
