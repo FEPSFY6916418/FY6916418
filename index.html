@@ -42,7 +42,7 @@
     margin-left: 250px;
   }
 
-  p.article, figcaption{
+  p.article{
     text-align: center;
     border-radius: 25px;
     border: 2px solid #05AD98;
@@ -50,6 +50,10 @@
     padding: 20px;
     width: auto;
     height: auto;
+  }
+      
+  figcaption{
+    text-align:center;
   }
 
   table{
@@ -78,7 +82,8 @@
   }
       
     </style>
-      
+
+    
   </head>
   <body>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -104,30 +109,32 @@
       <td><a href = "#References">References</td>
     </tr>
     </table>
+
+    
     <h3 id="Abstract">Abstract</h3>
     <p class = "article">This article delves into the mathematics of the Laplace transform, especially concerning complex differential equations. Beginning with how exponentials behave on the complex plane, we are led into the process of guessing an exponential as part of a generic differential equation to solve for its unknowns, before explaining why this works and the influence of the Laplace transform. The Laplace transform is then defined and used to solve a wider variety of differential equations than the previous simplification of guessing exponentials (due to less restrictions). The ability of the transform to enable the differential equations to be analysed in the complex plane is then made apparent by observing the behaviour of poles and their relation to the exponentials from the beginning.</p>
     <hr>
     <h3 id="Introduction">Introduction</h3>
-    <p id="Introduction_InText" class = "article">Have you ever taken a phone call? Or listened to a piece of music? Given we’re in the year 2025, you could ask most people these questions and they would say yes. But have you ever considered how we can clearly hear the person on the other side of the call? Or how you can hear the music without background sounds from the studio? In both scenarios, it’s likely a form of the Laplace transform was used. But what is a transform? A transform takes functions as inputs and outputs another function (Grant Sanderson, 2025, 6:03) helping solve various problems.</p>
+    <p id = "Introduction_InText" class = "article">Have you ever taken a phone call? Or listened to a piece of music? Given we’re in the year 2025, you could ask most people these questions and they would say yes. But have you ever considered how we can clearly hear the person on the other side of the call? Or how you can hear the music without background sounds from the studio? In both scenarios, it’s likely a form of the Laplace transform was used. But what is a transform? A transform takes functions as inputs and outputs another function (Grant Sanderson, 2025, 6:03) helping solve various problems.</p>
     <hr>
     <h3 id="Analysis & Discussion">Analysis & Discussion</h3>
-    <p id="Analysis_InText" class = "article">
-      Before exploring how the transform is computed, it’s important to highlight exponential functions’ behaviour when you allow complex numbers (Pierce, R., 2025) as inputs. This is as it includes an exponential in its definition (Grant Sanderson, 2025a, 7:29). If we take a value and multiply it by i, which is √-1, we cause a 90° rotation in the complex (s) plane (Grant Sanderson, 2025b, 4:20), (Grant Sanderson, 2025a, 4:52), (Pierce, R., 2025), as shown in Figure 1.
+    <div id="Analysis_InText">
+    <p class = "article"> Before exploring how the transform is computed, it’s important to highlight exponential functions’ behaviour when you allow complex numbers (Pierce, R., 2025) as inputs. This is as it includes an exponential in its definition (Grant Sanderson, 2025a, 7:29). If we take a value and multiply it by i, which is √-1, we cause a 90° rotation in the complex (s) plane (Grant Sanderson, 2025b, 4:20), (Grant Sanderson, 2025a, 4:52), (Pierce, R., 2025), as shown in Figure 1.</p>
       <figure>
       <img src="1.png">
       <figcaption>Figure 1 (Zauberberg Lab Company Limited, 2025), (Grant Sanderson, 2025b, 4:20)</figcaption>
       </figure>
-      Take the function g(t) = eit, by differentiating we can get g’(t) = ieit, we can see finding the derivative multiplies the exponential by i since it’s a constant. This means that the derivative always needs to be perpendicular to the function’s current value when varied. This is only possible if g(t) is a unit circle (Grant Sanderson, 2025b, 5:05). This function is a special case of f(t) = est, where s equals i (Grant Sanderson, 2025, 7:09), s is a complex number in the form s = σ + iω where σ is the real part and iω the imaginary part (AmBrBit, 2025), (Pierce, R., 2025). If we graph f(t), the imaginary part of s represents the frequency and direction of oscillation of the spirals formed on the s plane and the real part tells us if the function is converging to a point if negative or diverging if positive (Grant Sanderson, 2025b, 9:10), as shown in Figure 2 (note a = σ and b = ω).
+    <p class = "article">Take the function g(t) = eit, by differentiating we can get g’(t) = ieit, we can see finding the derivative multiplies the exponential by i since it’s a constant. This means that the derivative always needs to be perpendicular to the function’s current value when varied. This is only possible if g(t) is a unit circle (Grant Sanderson, 2025b, 5:05). This function is a special case of f(t) = est, where s equals i (Grant Sanderson, 2025, 7:09), s is a complex number in the form s = σ + iω where σ is the real part and iω the imaginary part (AmBrBit, 2025), (Pierce, R., 2025). If we graph f(t), the imaginary part of s represents the frequency and direction of oscillation of the spirals formed on the s plane and the real part tells us if the function is converging to a point if negative or diverging if positive (Grant Sanderson, 2025b, 9:10), as shown in Figure 2 (note a = σ and b = ω).</p>
       <figure>
       <img src="2.png">
       <figcaption>Figure 2 (Miller, H, 2015b)</figcaption>
       </figure>
-      An application of this is in ordinary differential equations (ODEs). If you have any sum of derivatives of a function that equal 0, scaled by any set of constants, and you don’t know the function that the system corresponds to, you could guess est as the function (Grant Sanderson, 2025b, 21:09). Recalling from earlier, when differentiating exponentials with a constant, we multiply by that constant, so if we substitute est, each derivative is multiplied by sn (n being a derivative’s order) (Grant Sanderson, 2025b, 13:32). We can then factor est out, since est ≠ 0, we’re left with an algebraic equation of the scaled constants (Grant Sanderson, 2025b, 21:37). If we solve this, we can set s to any of the roots and adapt them to our specific system by scaling by any constant and summing (Grant Sanderson, 2025b, 22:12). This implies that many functions can be expressed as sums of exponentials (Grant Sanderson, 2025a, 2:28). For examples outside these conditions we can’t just guess est, this is when we would use a Laplace transform (Grant Sanderson, 2025b, 23:55, 26:55). The Laplace transform is defined as F(s) = ∫_0^∞▒〖f(t) e^(-st) 〗 dt (Grant Sanderson, 2025a, 7:29). Looking back at our ODE example, we can instead apply a Laplace transform to our derivatives by substituting them into the integral and using integration by parts (it’s common to use a table to skip this) (Grant Sanderson, 2025c, 20:25), (AmBrBit, 2025). We can observe that applying a Laplace transform to a derivative is almost the same as applying the Laplace transform to the previous order derivative and then multiplying by s, you just have to subtract the initial condition (usually the function when t=0 differentiated per higher order derivative), this is very similar to the guess of substituting est into the ODE (Grant Sanderson, 2025c, 4:43). Applying the transform works when the est guess doesn’t. For example, if an ODE equals a function such as f(t) = cos(ωt), we can substitute and integrate for the result F(s) = s/(s^2+ω^2 ) (AmBrBit, 2025). We can use partial fraction decomposition to get F(s) = 1/2(1/(s-iω)+1/(s+iω)) (Grant Sanderson, 2025a, 32:23), using a table or inverse Laplace transform (AmBrBit, 2025), (Luo, S. & Zhao, F., 2022), we can see f(t) = 1/2(e^iωt+e^(-iωt)). This means we split cos(ωt) into a sum of exponentials which we can adapt according to our system as with our guessing method (Grant Sanderson, 2025b, 22:12). It's also useful to analyse our functions in the s plane (Grant Sanderson, 2025a, 22:30). We can create a 3D plot, by plotting the vectors to the points of convergence (where the graphs spiral to) of our function above the s plane (Grant Sanderson, 2025a, 16:21). Typically, our transformed function would only converge when s is sufficiently large, however it’s still possible to graph the rest of the function on the s plane (Grant Sanderson, 2025a, 22:42). This reveals the poles of our function, which are points where the function approaches infinity (Miller, H, 2012), (Rowland, T & Weisstein, E, 2025). From our example before we can see that F(s) would approach infinity if either denominator was 0, meaning s would be ±iω, these are our poles and would appear as spikes above the s plane, or dots in Figure 3’s simplification (Grant Sanderson 2025a, 23:42). The poles are significant because they’re the coefficients of t in the exponentials that make up the function (Miller, H, 2012).
+    <p class = "article">An application of this is in ordinary differential equations (ODEs). If you have any sum of derivatives of a function that equal 0, scaled by any set of constants, and you don’t know the function that the system corresponds to, you could guess est as the function (Grant Sanderson, 2025b, 21:09). Recalling from earlier, when differentiating exponentials with a constant, we multiply by that constant, so if we substitute est, each derivative is multiplied by sn (n being a derivative’s order) (Grant Sanderson, 2025b, 13:32). We can then factor est out, since est ≠ 0, we’re left with an algebraic equation of the scaled constants (Grant Sanderson, 2025b, 21:37). If we solve this, we can set s to any of the roots and adapt them to our specific system by scaling by any constant and summing (Grant Sanderson, 2025b, 22:12). This implies that many functions can be expressed as sums of exponentials (Grant Sanderson, 2025a, 2:28). For examples outside these conditions we can’t just guess est, this is when we would use a Laplace transform (Grant Sanderson, 2025b, 23:55, 26:55). The Laplace transform is defined as F(s) = ∫_0^∞▒〖f(t) e^(-st) 〗 dt (Grant Sanderson, 2025a, 7:29). Looking back at our ODE example, we can instead apply a Laplace transform to our derivatives by substituting them into the integral and using integration by parts (it’s common to use a table to skip this) (Grant Sanderson, 2025c, 20:25), (AmBrBit, 2025). We can observe that applying a Laplace transform to a derivative is almost the same as applying the Laplace transform to the previous order derivative and then multiplying by s, you just have to subtract the initial condition (usually the function when t=0 differentiated per higher order derivative), this is very similar to the guess of substituting est into the ODE (Grant Sanderson, 2025c, 4:43). Applying the transform works when the est guess doesn’t. For example, if an ODE equals a function such as f(t) = cos(ωt), we can substitute and integrate for the result F(s) = s/(s^2+ω^2 ) (AmBrBit, 2025). We can use partial fraction decomposition to get F(s) = 1/2(1/(s-iω)+1/(s+iω)) (Grant Sanderson, 2025a, 32:23), using a table or inverse Laplace transform (AmBrBit, 2025), (Luo, S. & Zhao, F., 2022), we can see f(t) = 1/2(e^iωt+e^(-iωt)). This means we split cos(ωt) into a sum of exponentials which we can adapt according to our system as with our guessing method (Grant Sanderson, 2025b, 22:12). It's also useful to analyse our functions in the s plane (Grant Sanderson, 2025a, 22:30). We can create a 3D plot, by plotting the vectors to the points of convergence (where the graphs spiral to) of our function above the s plane (Grant Sanderson, 2025a, 16:21). Typically, our transformed function would only converge when s is sufficiently large, however it’s still possible to graph the rest of the function on the s plane (Grant Sanderson, 2025a, 22:42). This reveals the poles of our function, which are points where the function approaches infinity (Miller, H, 2012), (Rowland, T & Weisstein, E, 2025). From our example before we can see that F(s) would approach infinity if either denominator was 0, meaning s would be ±iω, these are our poles and would appear as spikes above the s plane, or dots in Figure 3’s simplification (Grant Sanderson 2025a, 23:42). The poles are significant because they’re the coefficients of t in the exponentials that make up the function (Miller, H, 2012).</p>
       <figure>
       <img src="3.png">
       <figcaption>Figure 3 (Miller, H, 2015a)</figcaption>
       </figure>
-    </p>
+    </div>
     <p id="Conclusion_InText" class = "article">Due to the wide applications of ODEs in systems that change over time, we can clearly see why this topic is important. Even from our very first examples, sounds can be modeled as more complicated functions, and you can simply transform them and remove the exponential part that corresponds to the background sound. To conclude, the Laplace transform is an extremely powerful tool to analyse and solve ODEs.</p>
     <hr>
     <h3 id="References">References</h3>
